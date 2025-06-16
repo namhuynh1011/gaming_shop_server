@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "zjH8AkuMHpucQky1mbgEZrMu61B6Y2VZJRBJOyHBx0g=",
+  "Source": "gaming_shop_server",
+  "BasePath": "_content/gaming_shop_server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
