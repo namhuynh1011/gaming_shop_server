@@ -1,0 +1,1 @@
+# gaming_shop_server
