@@ -63,12 +63,13 @@ namespace gaming_shop_api.Controllers
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user.IsBanned)
+                return Unauthorized(new { message = "Tài khoản bị khoá bởi admin." });
             if (user == null)
-                return Unauthorized("Email hoặc mật khẩu không đúng.");
-
+                return Unauthorized(new {message =  "Email hoặc mật khẩu không đúng." });
             var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
             if (!result.Succeeded)
-                return Unauthorized("Email hoặc mật khẩu không đúng.");
+                return Unauthorized(new { message = "Email hoặc mật khẩu không đúng." });
 
             var roles = await _userManager.GetRolesAsync(user);
 

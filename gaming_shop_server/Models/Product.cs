@@ -15,7 +15,7 @@ namespace gaming_shop_api.Models
 
         public string? Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
