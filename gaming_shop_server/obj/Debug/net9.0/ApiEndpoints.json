@@ -298,6 +298,67 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
+    "Method": "Callback",
+    "RelativePath": "api/PaymentAPI/Callback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "VNPAY.NET.Models.PaymentResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
+    "Method": "CreatePaymentUrl",
+    "RelativePath": "api/PaymentAPI/CreatePaymentUrl",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "money",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
+    "Method": "IpnAction",
+    "RelativePath": "api/PaymentAPI/IpnAction",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "gaming_shop_server.Controllers.ProductAPIController",
     "Method": "GetProducts",
     "RelativePath": "api/ProductAPI",

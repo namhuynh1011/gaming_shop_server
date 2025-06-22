@@ -57,9 +57,12 @@ namespace gaming_shop_server.Controllers
             }
             else if (request.PaymentMethod == "vnpay")
             {
-                // Tạo url thanh toán VNPAY (giả lập)
-                string vnpayUrl = $"https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?orderId={order.Id}&amount={order.TotalAmount}";
-                return Ok(new { redirectUrl = vnpayUrl, message = "Chuyển sang trang thanh toán VNPAY" });
+
+                // Chuyển sang trang demo chính thức của VNPAY
+                return Redirect("http://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder");
+
+                // HOẶC nếu thích view mã QR tĩnh (tạo view DemoVnpayQr.cshtml)
+                // return View("DemoVnpayQr");
             }
             else
             {
