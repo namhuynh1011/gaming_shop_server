@@ -1,5 +1,6 @@
 ﻿using gaming_shop_api.Models;
 using gaming_shop_server.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,8 @@ namespace gaming_shop_server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class BrandAPIController : ControllerBase
     {
         private readonly IBrandRepository _brandRepo;

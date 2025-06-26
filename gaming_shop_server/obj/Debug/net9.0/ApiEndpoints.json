@@ -283,6 +283,53 @@
   },
   {
     "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
+    "Method": "GetAllOrders",
+    "RelativePath": "api/OrderAPI/admin/orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
+    "Method": "GetOrderById",
+    "RelativePath": "api/OrderAPI/admin/orders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
+    "Method": "UpdateOrderStatus",
+    "RelativePath": "api/OrderAPI/admin/orders/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "gaming_shop_server.Controllers.UpdateOrderStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
     "Method": "Checkout",
     "RelativePath": "api/OrderAPI/checkout",
     "HttpMethod": "POST",
@@ -298,64 +345,29 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
-    "Method": "Callback",
-    "RelativePath": "api/PaymentAPI/Callback",
+    "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
+    "Method": "GetUserOrders",
+    "RelativePath": "api/OrderAPI/my-orders",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "VNPAY.NET.Models.PaymentResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
-    "Method": "CreatePaymentUrl",
-    "RelativePath": "api/PaymentAPI/CreatePaymentUrl",
+    "ContainingType": "gaming_shop_server.Controllers.OrderAPIController",
+    "Method": "GetUserOrderById",
+    "RelativePath": "api/OrderAPI/my-orders/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "money",
-        "Type": "System.Double",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "gaming_shop_server.Controllers.PaymentAPIController",
-    "Method": "IpnAction",
-    "RelativePath": "api/PaymentAPI/IpnAction",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

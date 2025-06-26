@@ -170,9 +170,5 @@ E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\ga
 E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\ref\gaming_shop_server.dll
 E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\bin\Debug\net9.0\gaming_shop_server.staticwebassets.runtime.json
 E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\bin\Debug\net9.0\VNPAY.NET.dll
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets\msbuild.gaming_shop_server.Microsoft.AspNetCore.StaticWebAssets.props
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets\msbuild.gaming_shop_server.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets\msbuild.build.gaming_shop_server.props
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.gaming_shop_server.props
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.gaming_shop_server.props
-E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets.pack.json
+E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\obj\Debug\net9.0\staticwebassets.build.json.cache
+E:\Project_Gaming_Shop\gaming_shop_server\gaming_shop_server\bin\Debug\net9.0\Newtonsoft.Json.dll

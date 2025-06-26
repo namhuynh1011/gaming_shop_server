@@ -530,56 +530,10 @@
         }
       }
     },
-    "/api/PaymentAPI/CreatePaymentUrl": {
+    "/api/OrderAPI/admin/orders": {
       "get": {
         "tags": [
-          "PaymentAPI"
-        ],
-        "parameters": [
-          {
-            "name": "money",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/PaymentAPI/IpnAction": {
-      "get": {
-        "tags": [
-          "PaymentAPI"
+          "OrderAPI"
         ],
         "responses": {
           "200": {
@@ -588,31 +542,102 @@
         }
       }
     },
-    "/api/PaymentAPI/Callback": {
+    "/api/OrderAPI/admin/orders/{id}": {
       "get": {
         "tags": [
-          "PaymentAPI"
+          "OrderAPI"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentResult"
-                }
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/OrderAPI/my-orders": {
+      "get": {
+        "tags": [
+          "OrderAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/OrderAPI/my-orders/{id}": {
+      "get": {
+        "tags": [
+          "OrderAPI"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/OrderAPI/admin/orders/{id}/status": {
+      "put": {
+        "tags": [
+          "OrderAPI"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -1012,20 +1037,6 @@
   },
   "components": {
     "schemas": {
-      "BankingInfor": {
-        "type": "object",
-        "properties": {
-          "bankCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "bankTransactionId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Brand": {
         "required": [
           "brandName"
@@ -1145,57 +1156,6 @@
         },
         "additionalProperties": false
       },
-      "PaymentResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ResponseCode"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PaymentResult": {
-        "type": "object",
-        "properties": {
-          "paymentId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "vnpayTransactionId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "paymentMethod": {
-            "type": "string",
-            "nullable": true
-          },
-          "paymentResponse": {
-            "$ref": "#/components/schemas/PaymentResponse"
-          },
-          "transactionStatus": {
-            "$ref": "#/components/schemas/TransactionStatus"
-          },
-          "bankingInfor": {
-            "$ref": "#/components/schemas/BankingInfor"
-          }
-        },
-        "additionalProperties": false
-      },
       "Product": {
         "type": "object",
         "properties": {
@@ -1262,25 +1222,6 @@
         },
         "additionalProperties": false
       },
-      "ResponseCode": {
-        "enum": [
-          0,
-          7,
-          9,
-          10,
-          11,
-          12,
-          13,
-          24,
-          51,
-          65,
-          75,
-          79,
-          99
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "SetRolesDto": {
         "type": "object",
         "properties": {
@@ -1294,32 +1235,15 @@
         },
         "additionalProperties": false
       },
-      "TransactionStatus": {
+      "UpdateOrderStatusDto": {
         "type": "object",
         "properties": {
-          "code": {
-            "$ref": "#/components/schemas/TransactionStatusCode"
-          },
-          "description": {
+          "status": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
-      },
-      "TransactionStatusCode": {
-        "enum": [
-          0,
-          1,
-          2,
-          4,
-          5,
-          6,
-          7,
-          9
-        ],
-        "type": "integer",
-        "format": "int32"
       },
       "UpdateProfileDto": {
         "type": "object",
