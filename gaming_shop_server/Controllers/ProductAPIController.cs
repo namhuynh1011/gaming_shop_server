@@ -20,6 +20,10 @@ namespace gaming_shop_server.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             var products = await _productRepo.GetAllAsync();
+            // Nếu là admin thì trả về tất cả, nếu không thì chỉ trả về IsHidden == false
+            var isAdmin = User.IsInRole("Admin");
+            if (!isAdmin)
+                products = products.Where(p => !p.IsHidden).ToList();
             return Ok(products);
         }
 
@@ -46,7 +50,8 @@ namespace gaming_shop_server.Controllers
                 BrandId = dto.BrandId,
                 CategoryId = dto.CategoryId,
                 Description = dto.Description,
-                ImageUrl = imageUrl
+                ImageUrl = imageUrl,
+                IsHidden = false
             };
 
             var created = await _productRepo.AddAsync(product);
@@ -74,7 +79,8 @@ namespace gaming_shop_server.Controllers
                 BrandId = dto.BrandId,
                 CategoryId = dto.CategoryId,
                 Description = dto.Description,
-                ImageUrl = imageUrl
+                ImageUrl = imageUrl,
+                IsHidden = false
             };
 
             var updated = await _productRepo.UpdateAsync(id, updatedProduct);
@@ -108,6 +114,18 @@ namespace gaming_shop_server.Controllers
                 await image.CopyToAsync(fileStream);
             }
             return "/images/" + fileName;
+        }
+        [HttpPut("{id}/hide")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> HideProduct(int id, [FromBody] bool isHidden)
+        {
+            var product = await _productRepo.GetByIdAsync(id);
+            if (product == null)
+                return NotFound();
+
+            product.IsHidden = isHidden;
+            await _productRepo.UpdateAsync(id, product);
+            return Ok(new { product.Id, product.IsHidden });
         }
     }
 }

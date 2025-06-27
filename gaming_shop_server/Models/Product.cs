@@ -24,5 +24,7 @@ namespace gaming_shop_api.Models
         [ForeignKey("Brand")]
         public int BrandId { get; set; }
         public Brand? Brand { get; set; }
+
+        public bool IsHidden { get; set; }
     }
 }

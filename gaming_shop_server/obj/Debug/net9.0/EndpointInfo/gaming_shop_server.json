@@ -895,6 +895,48 @@
         }
       }
     },
+    "/api/ProductAPI/{id}/hide": {
+      "put": {
+        "tags": [
+          "ProductAPI"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserAPI": {
       "get": {
         "tags": [
@@ -1192,6 +1234,9 @@
           },
           "brand": {
             "$ref": "#/components/schemas/Brand"
+          },
+          "isHidden": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
